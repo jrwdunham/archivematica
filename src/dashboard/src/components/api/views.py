@@ -57,13 +57,13 @@ def _api_endpoint(expected_methods, required_fields=[]):
             """Wrapper for custom endpoints with boilerplate code."""
             # Check HTTP verb
             if request.method not in expected_methods:
-                return django.http.HttpResponseNotAllowed(expected_methods)
+                return django.http.HttpResponseNotAllowed(expected_methods)  # 405
 
             # Auth
             auth_error = authenticate_request(request)
             if auth_error is not None:
                 response = {'message': auth_error, 'error': True}
-                return django.http.HttpResponseForbidden(
+                return django.http.HttpResponseForbidden(  # 403
                     json.dumps(response),
                     content_type='application/json'
                 )
@@ -157,7 +157,7 @@ def status(request, unit_uuid, unit_type):
     if unit is None:
         response['message'] = 'Cannot fetch {} with UUID {}'.format(unit_type, unit_uuid)
         response['error'] = True
-        return django.http.HttpResponseBadRequest(
+        return django.http.HttpResponseBadRequest(  # 400
             json.dumps(response),
             content_type='application/json',
         )
@@ -174,7 +174,7 @@ def status(request, unit_uuid, unit_type):
     if error is not None:
         response['message'] = error
         response['error'] = True
-        return django.http.HttpResponseServerError(
+        return django.http.HttpResponseServerError(  # 500
             json.dumps(response),
             content_type='application/json'
         )
@@ -209,7 +209,7 @@ def waiting_for_user_input(request):
     if error is not None:
         response['message'] = error
         response['error'] = True
-        return django.http.HttpResponseServerError(
+        return django.http.HttpResponseServerError(  # 500
             json.dumps(response),
             content_type='application/json'
         )
