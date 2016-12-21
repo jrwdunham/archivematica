@@ -22,11 +22,12 @@ Checklist
 - [ ] Does this duplicate functionality found elsewhere?
 - [ ] Does it make more sense for this to be implemented elsewhere? E.g. Should this happen in the storage service vs a client script, or should a helper function live in archivematicaCommon?
 - [ ] Does this add or reduce technical debt?
-- [ ] Does this conflict with work being done in parallel?
-- [ ] Does this benefit from work being done in parallel?
+- [ ] Does this conflict with or benefit from work being done in parallel?
+- [ ] Does this have security implications? Does it add or close a security vulnerability?
+- [ ] Is there a more efficient way to do this? Is it significantly less readable?
 
 ### Style
-- [ ] Does it follows [PEP8](https://www.python.org/dev/peps/pep-0008/) (code style)?
+- [ ] Does it follow [PEP8](https://www.python.org/dev/peps/pep-0008/) (code style)?
 - [ ] Does it follow [PEP257](https://www.python.org/dev/peps/pep-0257/) (docstrings)?
 - [ ] Do docstrings list the parameters and behaviour?
 - [ ] Are the names accurate and sensible?
