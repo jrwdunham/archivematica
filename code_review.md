@@ -15,6 +15,7 @@ Checklist
 - [ ] Have they submitted a signed contributor's agreement?
 - [ ] Does this meet the requirements? Does it fix the bug?
 - [ ] Is this feature useful to multiple users or potential users?
+- [ ] Is this one logical piece of work? Does it make sense to be split into multiple PRs for each sub-feature?
 - [ ] Is there documentation?  This includes docstrings, comments & potentially user-facing documentation.
 - [ ] Is the commit history clean?
 
@@ -25,28 +26,30 @@ Checklist
 - [ ] Does this conflict with or benefit from work being done in parallel?
 - [ ] Does this have security implications? Does it add or close a security vulnerability?
 - [ ] Is there a more efficient way to do this? Is it significantly less readable?
+- [ ] Is this change backwards compatible? If not, could it be?  Should the API be versioned?
 
 ### Style
-- [ ] Does it follow [PEP8](https://www.python.org/dev/peps/pep-0008/) (code style)?
-- [ ] Does it follow [PEP257](https://www.python.org/dev/peps/pep-0257/) (docstrings)?
+- [ ] Does it follow [PEP8](https://www.python.org/dev/peps/pep-0008/) (code style) and [PEP257](https://www.python.org/dev/peps/pep-0257/) (docstrings)?
 - [ ] Do docstrings list the parameters and behaviour?
 - [ ] Are the names accurate and sensible?
 - [ ] Are there massive functions, classes or files? Can they be split?
-- [ ] Are errors handled?  Is this consistent with similar code?
+- [ ] Are errors handled?  Is the error handling consistent with similar code?
 
 ### Syntax:
 - [ ] Is it Python 2.7 & Python 3 compatible?
 - [ ] Are all user-facing strings marked for translation?
+- [ ] Do database changes have migrations?
 
 ### Tests
 - [ ] Are there tests?
 - [ ] Do the tests cover all the new functionality or fixes?
 - [ ] Do the tests handle error cases?
 - [ ] Is unit testing or integration testing more appropriate?
+- [ ] Does this work with non-ASCII?
 
 ### Doing
-- [ ] Do I understand what this is supposed to solve?
-- [ ] Have I checked out and run this code to verify it does what it says?
+- [ ] Do I understand what this is supposed to do?
+- [ ] Have I checked out and run this code to verify it does what it says & is supposed to?
 - [ ] Is someone else an expert in this area? Should I ask them to also review this?
 
-More advice and suggestions can be found at https://www.kevinlondon.com/2015/05/05/code-review-best-practices.html
+More advice and suggestions can be found at https://www.kevinlondon.com/2015/05/05/code-review-best-practices.html and https://hypothes.is/blog/code-review-in-remote-teams/
