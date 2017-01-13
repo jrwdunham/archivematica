@@ -126,6 +126,11 @@ def setup_reading_from_client_conf(config=None):
         hosts = config.get('MCPClient', "elasticsearchServer")
     except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
         hosts = '127.0.0.1:9200'
+    try:
+        request_timeout = config.get('MCPClient', "elasticsearchTimeout")
+    except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
+        request_timeout = '10'
+
     setup(hosts)
 
 
@@ -430,7 +435,7 @@ def try_to_index(client, data, index, doc_type, wait_between_tries=10, max_tries
 
     for _ in xrange(0, max_tries):
         try:
-            return client.index(body=data, index=index, doc_type=doc_type)
+            return client.index(body=data, index=index, doc_type=doc_type, request_timeout=request_timeout)
         except Exception as e:
             print("ERROR: error trying to index.")
             print(e)
